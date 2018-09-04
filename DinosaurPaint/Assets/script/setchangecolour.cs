@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 public class setchangecolour : MonoBehaviour {
-    public gameManager _gameManager;
+    public PaintManager _paintManager;
 	// Use this for initialization
     GameObject myDishColor;
 
@@ -14,7 +14,7 @@ public class setchangecolour : MonoBehaviour {
     }
 
     void Start () {
-        _gameManager = GameObject.FindObjectOfType<gameManager>();
+        _paintManager = GameObject.FindObjectOfType<PaintManager>();
     }
 
 
@@ -52,8 +52,8 @@ public class setchangecolour : MonoBehaviour {
     Color ConflicNewColor(int r, int g, int b, int alpha)
     {
         newColor = new Color(r/255f,g/255f,b/255f,alpha/255f);
-        _gameManager.newColor = newColor;
-        _gameManager.myColorDish.color = newColor;
+        _paintManager.newColor = newColor;
+        _paintManager.myColorDish.color = newColor;
 
         return newColor;
     }
