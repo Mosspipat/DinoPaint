@@ -1253,10 +1253,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc3f45602b0e45c40bc5213c79a9320f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Dinosaur: {fileID: 1241447985995694, guid: 7370146adc7cb354cbd32df90e6a4b5a, type: 2}
   dropdownSceneSelection: {fileID: 126932958}
   IPAddress: 127.0.0.1
   port: 8632
-  userID: {fileID: 1333164726112580, guid: e3cfe684165e2604dabe37b4aa72e5ab, type: 2}
 --- !u!4 &1695101840
 Transform:
   m_ObjectHideFlags: 0
@@ -1547,7 +1547,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Join Room
+  m_Text: "please \nselect scene"
 --- !u!222 &2101045693
 CanvasRenderer:
   m_ObjectHideFlags: 0

@@ -14,20 +14,14 @@ public class PaintBox : MonoBehaviour {
     [SerializeField]
     GameObject boxPaint;
 
-    [SerializeField]
-    GameObject dinosaurParent;
-
     void Awake()
     {
-        _paintManager = FindObjectOfType<PaintManager>();
-        _paintManager.width = width;
-        _paintManager.height = height;
     }
         
 
     void Start () {
         CheckWidthHeight();
-        GenerateBoxPaint();
+        GenerateBoxPaintAtDino();
     }
 
     void CheckWidthHeight()
@@ -42,9 +36,9 @@ public class PaintBox : MonoBehaviour {
        // Debug.Log("sizeXBoxPaint and sizeYBoxPaint: " + boxPaintSizeX + "and" + boxPaintSizeY);
     }
 
-    void GenerateBoxPaint()
+    void GenerateBoxPaintAtDino()
     {
-        //Instantiate(boxPaint.transform.position,) 
+        //Instantiate(boxPaint.transform.position) 
         //Debug.Log("Test Generate");
         for (int i = 0; i < slotX; i++)
         {

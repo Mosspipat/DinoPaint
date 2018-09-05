@@ -220,7 +220,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\CloneUserID.cs" />
     <Compile Include="Assets\DisplayManager.cs" />
     <Compile Include="Assets\NetworkViewGameManager.cs" />
     <Compile Include="Assets\NetworkViewPlayer.cs" />
