@@ -1,6 +1,6 @@
 WindowsStandalone
 da4c52c9909bd3be39196da81ac02114 Assembly-CSharp.dll:.NetworkController
-c441c2646bef76a4ec9092967ef61dfa Assembly-CSharp.dll:.PaintBox
+b7b19039193dc22245f593dafd9db20c Assembly-CSharp.dll:.PaintBox
 05524b8f659e7bfe5756d1335fec24ba UnityEngine.Timeline.dll:UnityEngine.Timeline.ActivationPlayableAsset
 970a95104359198fe1a98ef48655de8c UnityEngine.Timeline.dll:UnityEngine.Timeline.ActivationTrack
 8144169769d51429c4aedc8b0f92d47b UnityEngine.Timeline.dll:UnityEngine.Timeline.AnimationPlayableAsset
@@ -144,5 +144,7 @@ ea96e510b9387527921e052db1e7990a Assembly-CSharp.dll:.DinosaurBehavior
 a17af2161ef7ca8fad99afddb3253da7 Assembly-CSharp.dll:.setchangecolour
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.NetworkViewPlayer
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.NetworkViewGameManager
-c83715732c5e31fb8823faf96604b63c Assembly-CSharp.dll:.PaintManager
-05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.DinoDisplay
+528981b33a0f409cc37704fe721af7fa Assembly-CSharp.dll:.PaintManager
+f266a453cd4bfbe81533762a3e3589f4 DOTween.dll:DG.Tweening.Core.DOTweenComponent
+18ef1d63c7e0c1d33b0069d473d38345 DOTween.dll:DG.Tweening.Core.DOTweenSettings
+398f34ba32492d077766db1d347c9eb0 Assembly-CSharp.dll:.configScript

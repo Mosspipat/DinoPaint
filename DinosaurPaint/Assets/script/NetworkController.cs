@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using DG.Tweening;
 
 public class NetworkController : MonoBehaviour {
 
@@ -15,6 +16,7 @@ public class NetworkController : MonoBehaviour {
     Vector2 positionDinoplace;
     Transform posDinoGetter;
     Vector3 newScale;
+    int getMaxPixel;
 
     [SerializeField]
     Dropdown dropdownSceneSelection;
@@ -61,9 +63,9 @@ public class NetworkController : MonoBehaviour {
         UserLegRColorGet = new int[20];
 
         _NetworkView = GetComponent<NetworkView>();
-        dropdownSceneSelection.onValueChanged.AddListener(delegate {
+       /* dropdownSceneSelection.onValueChanged.AddListener(delegate {
             DropdownValueChanged(dropdownSceneSelection);
-        });
+        });*/
 
         DontDestroyOnLoad(this.gameObject);
     }
@@ -87,6 +89,7 @@ public class NetworkController : MonoBehaviour {
         Network.DestroyPlayerObjects(player);
     }
     #endregion
+    /*
     void DropdownValueChanged(Dropdown changeValue) {
         int sceneCase = changeValue.value;
         switch (sceneCase) {
@@ -103,7 +106,7 @@ public class NetworkController : MonoBehaviour {
                 //Debug.Log("please selet User Scene");
                 break;
         }
-    }
+    }*/
     //Phototype Value
     /*
     string someInfos;
@@ -111,8 +114,8 @@ public class NetworkController : MonoBehaviour {
     */
 
     string allTypeDinoSelected;
-    void OnGUI() {
-        if (!isConnect) {
+   // void OnGUI() {
+        /*if (!isConnect) {*/
             /* if (GUI.Button(new Rect(10, 100, 70, 30), "Connect ") && SceneSelected != null) {
 
                  Network.Connect(IPAddress, port);
@@ -127,7 +130,9 @@ public class NetworkController : MonoBehaviour {
                  isConnect = true;
              }*/
 
-            if (GUI.Button(new Rect(10, 100, 70, 30), " Create Server") && SceneSelected != null) {
+
+             //use this
+            /*if (GUI.Button(new Rect(10, 100, 70, 30), " Create Server") && SceneSelected != null) {
                 newIPAddress = IpAddressInput.text;
                 newport = int.Parse(PortInput.text);
 
@@ -151,7 +156,7 @@ public class NetworkController : MonoBehaviour {
                 Application.LoadLevel(SceneSelected);
 
                 isConnect = true;
-            }
+            }*/
 
            /* if (GUI.Button(new Rect(10, 150, 70, 30), " Create Server") && SceneSelected != null) {
                 newIPAddress = IpAddressInput.text;
@@ -163,13 +168,13 @@ public class NetworkController : MonoBehaviour {
                 isConnect = true;
             }*/
 
-        } else {
-            GUILayout.Label("Connections " + Network.connections.Length.ToString());
+        //} else {
+            /*GUILayout.Label("Connections " + Network.connections.Length.ToString());
             if (GUI.Button(new Rect(10, 50, 70, 30), " Disconnect")) {
 
                 Network.Disconnect(0);
                 isConnect = false;
-            }
+            }*/
             //phototype GUI set
             /*if (GUI.Button(new Rect(10, 80, 70, 30), "sum"+ someInfos)) {
                  i++;
@@ -177,12 +182,14 @@ public class NetworkController : MonoBehaviour {
                  _NetworkView.RPC("CloneDinosaur", RPCMode.AllBuffered);
                  _NetworkView.RPC("ReceiveInfoFromClient", RPCMode.AllBuffered, TypeDinoSelected.ToString());
              }*/
-            if (GUI.Button(new Rect(10, 80, 150, 30), "sendType" + allTypeDinoSelected)) {
 
+            /*
+            if (GUI.Button(new Rect(10, 80, 150, 30), "sendType" + allTypeDinoSelected)) {
+            */
                 /*for (int i  = 0;i< 10; i++) {
                     atest[i] = new Vector3(1+i,1,1);
                 }*/
-
+                /*
                 for (int i = 0; i < 20; i++) {
                     UserHeadColorGet[i] = GameObject.Find("Head").transform.GetChild(i).GetComponent<changeColour>().ColorThisBox;
                     UserArmLColorGet[i] = GameObject.Find("armL").transform.GetChild(i).GetComponent<changeColour>().ColorThisBox;
@@ -190,12 +197,12 @@ public class NetworkController : MonoBehaviour {
                     UserLegLColorGet[i] = GameObject.Find("legL").transform.GetChild(i).GetComponent<changeColour>().ColorThisBox;
                     UserLegRColorGet[i] = GameObject.Find("legR").transform.GetChild(i).GetComponent<changeColour>().ColorThisBox;
                 }
-
+                */
                 /*_NetworkView.RPC("SendChageTypeOnServer", RPCMode.Server);*/
-                _NetworkView.RPC("GetTypeOnServer", RPCMode.AllBuffered);
-            }
-        }
-    }
+                /*_NetworkView.RPC("GetTypeOnServer", RPCMode.AllBuffered);*/
+           // }
+       // }
+  //  }
 
     // typeDino
     /*[RPC]
@@ -252,9 +259,13 @@ public class NetworkController : MonoBehaviour {
                 break;
         }
 
+        getMaxPixel = allPixel;
+
         dinoGetter = Instantiate(allTypeDinosaur[typeWasSelected], positionDinoplace, allTypeDinosaur[typeWasSelected].transform.rotation);
         dinoGetter.transform.SetParent(posDinoGetter.transform);
+
         Invoke("setSize", 0.001f);
+
         dinoGetter.GetComponent<RectTransform>().localScale = new Vector3(1, 1, 1);
         Destroy(dinoGetter.gameObject,10f);
 
@@ -270,11 +281,9 @@ public class NetworkController : MonoBehaviour {
         allColorLegLSet = UserLegLColorSet;
         allColorLegRSet = UserLegRColorSet;
         
-        foreach(int a in allColorHeadSet) {
-        Debug.Log("set" + a);
-        }
         //wait for Map Color 
-        Invoke("SetCol", 0.05f);
+        Invoke("SetCol", 0.001f);
+        Invoke("MakeStroke", 0.5f);
 
         /*GameObject.FindObjectOfType<DisplayManager>().typeWasSelected = typeWasSelected;*/
         Debug.Log("sendToServer");
@@ -345,8 +354,9 @@ public class NetworkController : MonoBehaviour {
         }
 }*/
     void SetCol() {
-        for (int i = 0; i < 100; i++) {
 
+        Debug.Log("Set new Color to new Dino");
+        for (int i = 0; i < getMaxPixel; i++) {
         dinoGetter.transform.GetChild(0).GetChild(i).GetComponent<changeColour>().setColToNewDino(allColorHeadSet[i]);
         dinoGetter.transform.GetChild(1).GetChild(i).GetComponent<changeColour>().setColToNewDino(allColorHandLSet[i]);
         dinoGetter.transform.GetChild(2).GetChild(i).GetComponent<changeColour>().setColToNewDino(allColorHandRSet[i]);
@@ -358,5 +368,58 @@ public class NetworkController : MonoBehaviour {
     void setSize() {
         dinoGetter.GetComponent<RectTransform>().localScale = newScale;
     }
+    
+    void MakeStroke() {
 
+        //.......... make Stroke .........
+        GameObject strokeheadDino = Instantiate(dinoGetter.transform.GetChild(0).gameObject, dinoGetter.transform.GetChild(0).transform.position,
+            dinoGetter.transform.GetChild(0).transform.rotation);
+        Destroy(strokeheadDino.GetComponent<PaintBox>());
+        strokeheadDino.transform.localScale = newScale;
+        strokeheadDino.GetComponent<Image>().DOFade(0.2f, 1f);
+        strokeheadDino.transform.SetParent(dinoGetter.transform.GetChild(0).transform);
+        for (int i = 0; i < getMaxPixel; i++) {
+            Destroy(strokeheadDino.transform.GetChild(i).gameObject);
+        }
+
+        GameObject strokehandLDino = Instantiate(dinoGetter.transform.GetChild(1).gameObject, dinoGetter.transform.GetChild(1).transform.position,
+            dinoGetter.transform.GetChild(1).transform.rotation);
+        Destroy(strokehandLDino.GetComponent<PaintBox>());
+        strokehandLDino.transform.localScale = newScale;
+        strokehandLDino.GetComponent<Image>().DOFade(0.2f, 1f);
+        strokehandLDino.transform.SetParent(dinoGetter.transform.GetChild(1).transform);
+        for (int i = 0; i < getMaxPixel; i++) {
+            Destroy(strokehandLDino.transform.GetChild(i).gameObject);
+        }
+
+        GameObject strokehandRDino = Instantiate(dinoGetter.transform.GetChild(2).gameObject, dinoGetter.transform.GetChild(2).transform.position,
+            dinoGetter.transform.GetChild(2).transform.rotation);
+        Destroy(strokehandRDino.GetComponent<PaintBox>());
+        strokehandRDino.transform.localScale = newScale;
+        strokehandRDino.GetComponent<Image>().DOFade(0.2f, 1f);
+        strokehandRDino.transform.SetParent(dinoGetter.transform.GetChild(2).transform);
+        for (int i = 0; i < getMaxPixel; i++) {
+            Destroy(strokehandRDino.transform.GetChild(i).gameObject);
+        }
+
+        GameObject strokelegLDino = Instantiate(dinoGetter.transform.GetChild(3).gameObject, dinoGetter.transform.GetChild(3).transform.position,
+            dinoGetter.transform.GetChild(3).transform.rotation);
+        Destroy(strokelegLDino.GetComponent<PaintBox>());
+        strokelegLDino.transform.localScale = newScale;
+        strokelegLDino.GetComponent<Image>().DOFade(0.2f, 1f);
+        strokelegLDino.transform.SetParent(dinoGetter.transform.GetChild(3).transform);
+        for (int i = 0; i < getMaxPixel; i++) {
+            Destroy(strokelegLDino.transform.GetChild(i).gameObject);
+        }
+
+        GameObject strokelegRDino = Instantiate(dinoGetter.transform.GetChild(4).gameObject, dinoGetter.transform.GetChild(4).transform.position,
+           dinoGetter.transform.GetChild(4).transform.rotation);
+        Destroy(strokelegRDino.GetComponent<PaintBox>());
+        strokelegRDino.transform.localScale = newScale;
+        strokelegRDino.GetComponent<Image>().DOFade(0.2f, 1f);
+        strokelegRDino.transform.SetParent(dinoGetter.transform.GetChild(4).transform);
+        for (int i = 0; i < getMaxPixel; i++) {
+            Destroy(strokelegRDino.transform.GetChild(i).gameObject);
+        }
+    }
 }

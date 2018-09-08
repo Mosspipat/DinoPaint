@@ -4,10 +4,12 @@ using UnityEngine;
 
 public class PaintBox : MonoBehaviour {
 
+    configScript configSlot;
+
     PaintManager _paintManager;
     // x = 100; y = 40;
-    [SerializeField]
-    int slotX = 10, slotY= 10;
+    int slotX;
+    int slotY;
 
     float width,height,boxPaintSizeX,boxPaintSizeY;
 
@@ -15,15 +17,22 @@ public class PaintBox : MonoBehaviour {
     GameObject boxPaint;
 
 
+
     public int[] allValuePaint;
 
     void Start () {
+
+       configSlot = GameObject.FindObjectOfType<configScript>();
+        slotX = configSlot.slotXInt;
+        slotY = configSlot.slotYInt;
+
         CheckWidthHeight();
         GenerateBoxPaintAtDino();
     }
 
     void CheckWidthHeight()
     {
+
         width = this.GetComponent<RectTransform>().rect.width;
         height = this.GetComponent<RectTransform>().rect.height;
 
@@ -38,6 +47,7 @@ public class PaintBox : MonoBehaviour {
     {
         //Instantiate(boxPaint.transform.position) 
         //Debug.Log("Test Generate");
+
         for (int i = 0; i < slotX; i++)
         {
             for (int j = 0; j < slotY; j++)

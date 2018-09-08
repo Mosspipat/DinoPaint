@@ -2,10 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using DG.Tweening;
 
 public class PaintManager : MonoBehaviour {
 
     NetworkController _NetworkViewCommunicate;
+
+    int maxPixel;
+
+    configScript configSlot;
 
     [SerializeField]
     Image backgroundImage;
@@ -46,19 +51,24 @@ public class PaintManager : MonoBehaviour {
     public GameObject legLDino;
     public GameObject legRDino;
 
-    [SerializeField]
-    int maxPixel;
-
     int[] allPaintPartDinohead;
     int[] allPaintPartDinohandL;
     int[] allPaintPartDinohandR;
     int[] allPaintPartDinolegL;
     int[] allPaintPartDinolegR;
 
+    [SerializeField]
+    GameObject sendPanel;
+    [SerializeField]
+    GameObject fadeImage;
+
     void Awake() {
         myColorDish = GameObject.Find("myColorDish").GetComponent<Image>();
     }
     void Start() {
+
+        configSlot = GameObject.FindObjectOfType<configScript>();
+        maxPixel = configSlot.maxPixel;
 
         allPaintPartDinohead = new int[maxPixel];
         allPaintPartDinohandL = new int[maxPixel];
@@ -99,7 +109,6 @@ public class PaintManager : MonoBehaviour {
             }
         }
     }
-
 
     private void OnGUI() {
         GUILayout.Label("Connections " + Network.connections.Length.ToString());
@@ -154,6 +163,8 @@ public class PaintManager : MonoBehaviour {
         legLDino = paintDino.transform.GetChild(3).gameObject;
         legRDino = paintDino.transform.GetChild(4).gameObject;
 
+        Invoke("MakeStroke", 0.1f);
+
         paintDino.transform.SetParent(placePoint.transform);
         paintDino.GetComponent<RectTransform>().localScale = new Vector3(1, 1, 1);
     }
@@ -200,6 +211,72 @@ public class PaintManager : MonoBehaviour {
             handRDino.transform.GetChild(i).GetComponent<Image>().color = new Color(255, 255, 255, 255);
             legLDino.transform.GetChild(i).GetComponent<Image>().color = new Color(255, 255, 255, 255);
             legRDino.transform.GetChild(i).GetComponent<Image>().color = new Color(255, 255, 255, 255);
+        }
+    }
+
+    public void PrepareSend() {
+        sendPanel.transform.DOScale(1, 1f);
+        fadeImage.GetComponent<Image>().DOColor(Color.black, 1f);
+        fadeImage.GetComponent<Image>().DOFade(1, 1f);
+    }
+
+    public void CancelSend() {
+        sendPanel.transform.DOScale(0, 1f);
+        fadeImage.GetComponent<Image>().DOColor(Color.white, 1f);
+        fadeImage.GetComponent<Image>().DOFade(0, 1f);
+    }
+
+    void MakeStroke() {
+
+        //.......... make Stroke .........
+        GameObject strokeheadDino = Instantiate(paintDino.transform.GetChild(0).gameObject, headDino.transform.position,
+            paintDino.transform.GetChild(0).gameObject.transform.rotation);
+        Destroy(strokeheadDino.GetComponent<PaintBox>());
+        strokeheadDino.GetComponent<Image>().DOFade(0.2f, 1f);
+        strokeheadDino.GetComponent<Image>().raycastTarget = false;
+        strokeheadDino.transform.SetParent(headDino.transform);
+        for (int i = 0; i < maxPixel; i++) {
+            Destroy(strokeheadDino.transform.GetChild(i).gameObject);
+        }
+
+    GameObject strokehandLDino = Instantiate(paintDino.transform.GetChild(1).gameObject, handLDino.transform.position,
+        paintDino.transform.GetChild(1).gameObject.transform.rotation);
+    Destroy(strokehandLDino.GetComponent<PaintBox>());
+        strokehandLDino.GetComponent<Image>().DOFade(0.2f, 1f);
+        strokehandLDino.GetComponent<Image>().raycastTarget = false;
+        strokehandLDino.transform.SetParent(handLDino.transform);
+        for (int i = 0; i < maxPixel; i++) {
+            Destroy(strokehandLDino.transform.GetChild(i).gameObject);
+        }
+
+        GameObject strokehandRDino = Instantiate(paintDino.transform.GetChild(2).gameObject, handRDino.transform.position,
+            paintDino.transform.GetChild(2).gameObject.transform.rotation);
+        Destroy(strokehandRDino.GetComponent<PaintBox>());
+        strokehandRDino.GetComponent<Image>().DOFade(0.2f, 1f);
+        strokehandRDino.GetComponent<Image>().raycastTarget = false;
+        strokehandRDino.transform.SetParent(handRDino.transform);
+        for (int i = 0; i < maxPixel; i++) {
+            Destroy(strokehandRDino.transform.GetChild(i).gameObject);
+        }
+
+        GameObject strokelegLDino = Instantiate(paintDino.transform.GetChild(3).gameObject, legLDino.transform.position,
+            paintDino.transform.GetChild(3).gameObject.transform.rotation);
+        Destroy(strokelegLDino.GetComponent<PaintBox>());
+        strokelegLDino.GetComponent<Image>().DOFade(0.2f, 1f);
+        strokelegLDino.GetComponent<Image>().raycastTarget = false;
+        strokelegLDino.transform.SetParent(legLDino.transform);
+        for (int i = 0; i < maxPixel; i++) {
+            Destroy(strokelegLDino.transform.GetChild(i).gameObject);
+        }
+
+        GameObject strokelegRDino = Instantiate(paintDino.transform.GetChild(4).gameObject, legRDino.transform.position,
+            paintDino.transform.GetChild(4).gameObject.transform.rotation);
+        Destroy(strokelegRDino.GetComponent<PaintBox>());
+        strokelegRDino.GetComponent<Image>().DOFade(0.2f, 1f);
+        strokelegRDino.GetComponent<Image>().raycastTarget = false;
+        strokelegRDino.transform.SetParent(legRDino.transform);
+        for (int i = 0; i < maxPixel; i++) {
+            Destroy(strokelegRDino.transform.GetChild(i).gameObject);
         }
     }
 }
