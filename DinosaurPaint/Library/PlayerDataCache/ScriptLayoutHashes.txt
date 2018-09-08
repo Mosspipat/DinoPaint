@@ -111,6 +111,8 @@ bc68edb0af574bf79f9550ead8ebae5c UnityEngine.HoloLens.dll:UnityEngine.Audio.Audi
 463516d5b5fe8e67a0a24c48f2095b04 UnityEngine.HoloLens.dll:UnityEngine.EventSystems.HoloLensInputModule
 c2275a8bfbb9f9942cad75ecdfded41d UnityEngine.HoloLens.dll:UnityEngine.XR.WSA.SpatialMappingCollider
 45f3431f0103c41611e8d4eec3d439df UnityEngine.HoloLens.dll:UnityEngine.XR.WSA.SpatialMappingRenderer
+f266a453cd4bfbe81533762a3e3589f4 DOTween.dll:DG.Tweening.Core.DOTweenComponent
+18ef1d63c7e0c1d33b0069d473d38345 DOTween.dll:DG.Tweening.Core.DOTweenSettings
 527d9d5372cfa0d7d5bcfeade111252b Assembly-CSharp.dll:.changeColour
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.GetColorFromServer
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.DisplayManager
@@ -145,6 +147,4 @@ a17af2161ef7ca8fad99afddb3253da7 Assembly-CSharp.dll:.setchangecolour
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.NetworkViewPlayer
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.NetworkViewGameManager
 528981b33a0f409cc37704fe721af7fa Assembly-CSharp.dll:.PaintManager
-f266a453cd4bfbe81533762a3e3589f4 DOTween.dll:DG.Tweening.Core.DOTweenComponent
-18ef1d63c7e0c1d33b0069d473d38345 DOTween.dll:DG.Tweening.Core.DOTweenSettings
-398f34ba32492d077766db1d347c9eb0 Assembly-CSharp.dll:.configScript
+afb087f745bb4fec08ecf5c338f5e4bc Assembly-CSharp.dll:.configScript

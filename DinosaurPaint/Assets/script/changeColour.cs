@@ -29,7 +29,6 @@ public class changeColour : MonoBehaviour {
     }
 
     public void setColToNewDino(int colo) {
-
         Image thisBoxCol = GetComponent<Image>();
         Debug.Log("setNewColor");
 

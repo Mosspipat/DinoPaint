@@ -53,8 +53,11 @@ public class NetworkController : MonoBehaviour {
     public InputField IpAddressInput;
     public InputField PortInput;
 
+    NetworkController maxPixelConfig;
 
     void Start() {
+
+        Debug.Log("getMaxPixel" + getMaxPixel);
 
         UserHeadColorGet = new int[20];
         UserArmLColorGet = new int[20];
@@ -89,24 +92,6 @@ public class NetworkController : MonoBehaviour {
         Network.DestroyPlayerObjects(player);
     }
     #endregion
-    /*
-    void DropdownValueChanged(Dropdown changeValue) {
-        int sceneCase = changeValue.value;
-        switch (sceneCase) {
-            case 1:
-                SceneSelected = "Display";
-                //Application.LoadLevel(SceneSelected);
-                break;
-            case 2:
-                SceneSelected = "Paint";
-                //Application.LoadLevel(SceneSelected);
-                break;
-            default:
-                SceneSelected = null;
-                //Debug.Log("please selet User Scene");
-                break;
-        }
-    }*/
     //Phototype Value
     /*
     string someInfos;
@@ -211,7 +196,7 @@ public class NetworkController : MonoBehaviour {
     }*/
 
 
-    [RPC]
+    /*[RPC]
     void CloneDinosaur() {
         Vector3 posDinoZone = GameObject.Find("dinosaurZone").transform.position;
 
@@ -219,7 +204,7 @@ public class NetworkController : MonoBehaviour {
             new Vector3(Random.Range(-200, 200), 100, 0),
         allTypeDinosaur[0].transform.rotation);
         dinoClone.transform.SetParent(GameObject.Find("dinosaurZone").transform);
-    }
+    }*/
     /*Vector3[] atest = new Vector3[20];
     public Vector3[] showcol = new Vector3[20];*/
 
@@ -288,12 +273,12 @@ public class NetworkController : MonoBehaviour {
         /*GameObject.FindObjectOfType<DisplayManager>().typeWasSelected = typeWasSelected;*/
         Debug.Log("sendToServer");
     }
-    int[] UserHeadColorSet;
+        int[] UserHeadColorSet;
         int[] UserArmLColorSet;
         int[] UserArmRColorSet;
         int[] UserLegLColorSet;
         int[] UserLegRColorSet;
-    int _maxPixel;
+        int _maxPixel;
     [RPC]
     void GetTypeOnServer() {
         Debug.Log("getInServer");
@@ -356,6 +341,9 @@ public class NetworkController : MonoBehaviour {
     void SetCol() {
 
         Debug.Log("Set new Color to new Dino");
+
+        Debug.Log("is " + getMaxPixel);
+
         for (int i = 0; i < getMaxPixel; i++) {
         dinoGetter.transform.GetChild(0).GetChild(i).GetComponent<changeColour>().setColToNewDino(allColorHeadSet[i]);
         dinoGetter.transform.GetChild(1).GetChild(i).GetComponent<changeColour>().setColToNewDino(allColorHandLSet[i]);

@@ -11,8 +11,8 @@ public class configScript : MonoBehaviour {
     [SerializeField]
     Text showConfigSet;
 
-    public int slotXInt{get;set;}
-    public int slotYInt{get;set;}
+    public int slotXInt { get; set; }
+    public int slotYInt { get; set; }
 
     public int maxPixel { get; set; }
 
@@ -25,7 +25,7 @@ public class configScript : MonoBehaviour {
     bool isConnect;
 
     [SerializeField]
-    Dropdown selectionScene;
+    Dropdown selectionDino;
 
     string SceneSelected;
 
@@ -35,18 +35,37 @@ public class configScript : MonoBehaviour {
     [SerializeField]
     Button buttonActiveJoin;
 
+    public int typeDino {get;set;}
+
     private void Start() {
+
         DontDestroyOnLoad(this.gameObject);
 
         //addEvent DropDown
-        selectionScene.onValueChanged.AddListener(delegate {
-            DropdownValueChanged(selectionScene);
+        
+        selectionDino.onValueChanged.AddListener(delegate {
+            ChangeDino(selectionDino);
         });
     }
 
-    private void Update() {
-        //canCreateServer();
-    }
+    void ChangeDino(Dropdown selectionDino) {
+       switch (selectionDino.value) {
+           case 1:typeDino = selectionDino.value;
+                Debug.Log(selectionDino);
+               break;
+           case 2:typeDino = selectionDino.value;
+                Debug.Log(selectionDino);
+                break;
+           case 3:typeDino = selectionDino.value;
+                Debug.Log(selectionDino);
+                break;
+           case 4:typeDino = selectionDino.value;
+                Debug.Log(selectionDino);
+                break;
+           default:typeDino = 0;
+               break;
+       }
+   }
 
     public void SetMaxPixel() {
         //set Config to script
@@ -56,7 +75,8 @@ public class configScript : MonoBehaviour {
         maxPixel = slotXInt * slotYInt;
 
         showConfigSet.text = "slotX :" + slotXInt.ToString() + "\n slotY :" + slotYInt.ToString() + "\n maxPixel :" + slotXInt * slotYInt;
-        
+
+        buttonActiveJoin.interactable = true;
     }
 
     public void CreateServer() {
@@ -75,6 +95,8 @@ public class configScript : MonoBehaviour {
 
     public void Join() {
 
+        Debug.Log("typeis " +typeDino);
+
         newIPAddress = IpAddressInput.text;
         newport = int.Parse(PortInput.text);
 
@@ -88,22 +110,6 @@ public class configScript : MonoBehaviour {
         isConnect = true;
     }
 
-    void DropdownValueChanged(Dropdown changeValue) {
-        int sceneCase = changeValue.value;
-        switch (sceneCase) {
-            case 1:
-                SceneSelected = "Display";
-                //Application.LoadLevel(SceneSelected);
-                break;
-            case 2:
-                SceneSelected = "Paint";
-                //Application.LoadLevel(SceneSelected);
-                break;
-            default:
-                SceneSelected = null;
-                //Debug.Log("please selet User Scene");
-                break;
-        }
     }
 
     /*void canCreateServer() {
@@ -112,4 +118,3 @@ public class configScript : MonoBehaviour {
         }
         else { buttonActiveCreateServer.interactable = true; }
     }*/
-}

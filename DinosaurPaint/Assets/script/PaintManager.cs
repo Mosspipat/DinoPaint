@@ -64,11 +64,14 @@ public class PaintManager : MonoBehaviour {
 
     void Awake() {
         myColorDish = GameObject.Find("myColorDish").GetComponent<Image>();
+        typeDinosaurInt = GameObject.FindObjectOfType<configScript>().typeDino;
     }
     void Start() {
 
         configSlot = GameObject.FindObjectOfType<configScript>();
         maxPixel = configSlot.maxPixel;
+
+        Debug.Log("maxPixel"+maxPixel);
 
         allPaintPartDinohead = new int[maxPixel];
         allPaintPartDinohandL = new int[maxPixel];
@@ -81,9 +84,6 @@ public class PaintManager : MonoBehaviour {
 
         _NetworkViewCommunicate = FindObjectOfType<NetworkController>();
 
-        typeDinosaur.onValueChanged.AddListener(delegate {
-            DropdownValueChanged(typeDinosaur);
-        });
     }
 
     void Update() {
@@ -118,34 +118,6 @@ public class PaintManager : MonoBehaviour {
         }
     }
 
-    void DropdownValueChanged(Dropdown changeValue) {
-        typeDinosaurInt = changeValue.value;
-        ChangeTypePaint(typeDinosaurInt);
-        Debug.Log("changeDino");
-        switch (typeDinosaurInt) {
-            case 0:
-                _NetworkViewCommunicate.TypeDinoSelected = 0;
-                backgroundImage.sprite = allBackgroundImage[0];
-                break;
-            case 1:
-                _NetworkViewCommunicate.TypeDinoSelected = 1;
-                backgroundImage.sprite = allBackgroundImage[1];
-                break;
-            case 2:
-                _NetworkViewCommunicate.TypeDinoSelected = 2;
-                backgroundImage.sprite = allBackgroundImage[2];
-                break;
-            case 3:
-                _NetworkViewCommunicate.TypeDinoSelected = 3;
-                backgroundImage.sprite = allBackgroundImage[3];
-                break;
-            default:
-                _NetworkViewCommunicate.TypeDinoSelected = 0;
-                backgroundImage.sprite = allBackgroundImage[0];
-                break;
-        }
-    }
-
     void ChangeTypePaint(int typeDino) {
         Debug.Log(typeDino);
         Destroy(paintDino);
@@ -172,7 +144,7 @@ public class PaintManager : MonoBehaviour {
     public void SendPainting() {
 
         Debug.Log("send");
-
+        Debug.Log("Pixel" + maxPixel);
         for (int i = 0; i < maxPixel; i++) {
             allPaintPartDinohead[i] = headDino.transform.GetChild(i).GetComponent<changeColour>().ColorThisBox;
             allPaintPartDinohandL[i] = handLDino.transform.GetChild(i).GetComponent<changeColour>().ColorThisBox;
