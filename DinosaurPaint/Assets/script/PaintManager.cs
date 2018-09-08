@@ -5,6 +5,22 @@ using UnityEngine.UI;
 
 public class PaintManager : MonoBehaviour {
 
+    NetworkController _NetworkViewCommunicate;
+
+    [SerializeField]
+    Image backgroundImage;
+    [SerializeField]
+    List<Sprite> allBackgroundImage;
+
+    [SerializeField]
+    List<GameObject> AllTypeDino;
+
+    [SerializeField]
+    GameObject placePoint;
+
+    [SerializeField]
+    GameObject paintDino;
+
     [SerializeField]
     GameObject box;
 
@@ -12,27 +28,49 @@ public class PaintManager : MonoBehaviour {
     LayerMask otherDish;
 
     [SerializeField]
-    GameObject prefabOrigin;
-    [SerializeField]
-    GameObject ParentInstancePosition;
-
-    [SerializeField]
     Dropdown typeDinosaur;
+    public int typeDinosaurInt;
 
     /*public float width{ get; set;}
     public float height{ get; set;}*/
     public Image myColorDish { get; set; }
     public Color newColor;
+    public int newColorInt { get; set; }
 
     [SerializeField]
     LayerMask layerBoxColor;
 
+    public GameObject headDino;
+    public GameObject handLDino;
+    public GameObject handRDino;
+    public GameObject legLDino;
+    public GameObject legRDino;
+
+    [SerializeField]
+    int maxPixel;
+
+    int[] allPaintPartDinohead;
+    int[] allPaintPartDinohandL;
+    int[] allPaintPartDinohandR;
+    int[] allPaintPartDinolegL;
+    int[] allPaintPartDinolegR;
+
     void Awake() {
         myColorDish = GameObject.Find("myColorDish").GetComponent<Image>();
     }
-
     void Start() {
+
+        allPaintPartDinohead = new int[maxPixel];
+        allPaintPartDinohandL = new int[maxPixel];
+        allPaintPartDinohandR = new int[maxPixel];
+        allPaintPartDinolegL = new int[maxPixel];
+        allPaintPartDinolegR = new int[maxPixel];
+
         // Debug.Log("height and width :" + height + "and"+ width);
+        ChangeTypePaint(typeDinosaurInt);
+
+        _NetworkViewCommunicate = FindObjectOfType<NetworkController>();
+
         typeDinosaur.onValueChanged.AddListener(delegate {
             DropdownValueChanged(typeDinosaur);
         });
@@ -62,14 +100,6 @@ public class PaintManager : MonoBehaviour {
         }
     }
 
-    public void ResetPicture() {
-
-    }
-
-    public void SendPicture() {
-        GameObject newInstaceUser = Instantiate(prefabOrigin, ParentInstancePosition.transform.position, prefabOrigin.transform.rotation);
-        newInstaceUser.transform.SetParent(ParentInstancePosition.transform);
-    }
 
     private void OnGUI() {
         GUILayout.Label("Connections " + Network.connections.Length.ToString());
@@ -80,25 +110,81 @@ public class PaintManager : MonoBehaviour {
     }
 
     void DropdownValueChanged(Dropdown changeValue) {
-        NetworkController _NetworkViewCommunicate = FindObjectOfType<NetworkController>();
-        int typeDinosaur = changeValue.value;
-        switch (typeDinosaur) {
+            typeDinosaurInt = changeValue.value;
+            ChangeTypePaint(typeDinosaurInt);
+        Debug.Log("changeDino");
+        switch (typeDinosaurInt) {
+            case 0:
+                _NetworkViewCommunicate.TypeDinoSelected = 0;
+                backgroundImage.sprite = allBackgroundImage[0];
+                break;
             case 1:
-                _NetworkViewCommunicate.TypeDinoSelected = typeDinosaur;
+                _NetworkViewCommunicate.TypeDinoSelected = 1;
+                backgroundImage.sprite = allBackgroundImage[1];
                 break;
             case 2:
-                _NetworkViewCommunicate.TypeDinoSelected = typeDinosaur;
+                _NetworkViewCommunicate.TypeDinoSelected = 2;
+                backgroundImage.sprite = allBackgroundImage[2];
                 break;
             case 3:
-                _NetworkViewCommunicate.TypeDinoSelected = typeDinosaur;
-                break;
-            case 4:
-                _NetworkViewCommunicate.TypeDinoSelected = typeDinosaur;
+                _NetworkViewCommunicate.TypeDinoSelected = 3;
+                backgroundImage.sprite = allBackgroundImage[3];
                 break;
             default:
                 _NetworkViewCommunicate.TypeDinoSelected = 0;
+                backgroundImage.sprite = allBackgroundImage[0];
                 break;
         }
+    }
+
+    void ChangeTypePaint(int typeDino) {
+        Debug.Log(typeDino);
+        Destroy(paintDino);
+
+        paintDino = Instantiate(AllTypeDino[typeDino], placePoint.transform.position, AllTypeDino[typeDino].transform.rotation);
+
+
+        Destroy(paintDino.GetComponent<Rigidbody2D>());
+        Destroy(paintDino.GetComponent<DinosaurBehavior>());
+        Destroy(paintDino.GetComponent<Animator>());
+
+        headDino = paintDino.transform.GetChild(0).gameObject;
+        handLDino = paintDino.transform.GetChild(1).gameObject;
+        handRDino = paintDino.transform.GetChild(2).gameObject;
+        legLDino = paintDino.transform.GetChild(3).gameObject;
+        legRDino = paintDino.transform.GetChild(4).gameObject;
+
+        paintDino.transform.SetParent(placePoint.transform);
+        paintDino.GetComponent<RectTransform>().localScale = new Vector3(1, 1, 1);
+    }
+
+    public void ResetPicture() {
+
+    }
+
+    public void SendPainting() {
+
+        Debug.Log("send");
+
+        for (int i = 0; i < maxPixel; i++) {
+            allPaintPartDinohead[i] = headDino.transform.GetChild(i).GetComponent<changeColour>().ColorThisBox;
+            allPaintPartDinohandL[i] = handLDino.transform.GetChild(i).GetComponent<changeColour>().ColorThisBox;
+            allPaintPartDinohandR[i] = handRDino.transform.GetChild(i).GetComponent<changeColour>().ColorThisBox;
+            allPaintPartDinolegL[i] = legLDino.transform.GetChild(i).GetComponent<changeColour>().ColorThisBox;
+            allPaintPartDinolegR[i] = legRDino.transform.GetChild(i).GetComponent<changeColour>().ColorThisBox;
+        }
+
+        NetworkView netViewPlayer = FindObjectOfType<NetworkView>();
+
+        //send these Color num int to Server;
+        netViewPlayer.RPC("SendChageTypeOnServer", RPCMode.Server,
+            typeDinosaurInt,
+            maxPixel,
+            allPaintPartDinohead,
+            allPaintPartDinohandL,
+            allPaintPartDinohandR,
+            allPaintPartDinolegL,
+            allPaintPartDinolegR);
     }
 }
 

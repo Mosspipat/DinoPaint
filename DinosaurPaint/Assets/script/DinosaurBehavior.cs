@@ -5,20 +5,15 @@ using UnityEngine;
 public class DinosaurBehavior : MonoBehaviour {
 
     [SerializeField]
-    GameObject Dinosaur;
-
-    [SerializeField]
     float speed;
-    [SerializeField]
-    float forceJump;
 
     bool isflip;
+
     [SerializeField]
     float timeToflip;
 
 	void Start () {
         InvokeRepeating("Flip", 3f,timeToflip);
-        Jump();
     }
     
     void Update () {
@@ -33,11 +28,6 @@ public class DinosaurBehavior : MonoBehaviour {
     void Run()
     {
         transform.Translate(this.transform.forward * Time.deltaTime * speed *2f);
-    }
-
-    void Jump()
-    {
-        GetComponent<Rigidbody>().AddForce(Vector2.up * forceJump);
     }
 
     IEnumerator SpeedUp()

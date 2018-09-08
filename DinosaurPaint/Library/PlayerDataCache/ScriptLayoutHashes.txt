@@ -1,6 +1,6 @@
 WindowsStandalone
-84210579bcb37762853f744f16703981 Assembly-CSharp.dll:.NetworkController
-b3bd214f91e258949759eedad0030440 Assembly-CSharp.dll:.PaintBox
+da4c52c9909bd3be39196da81ac02114 Assembly-CSharp.dll:.NetworkController
+c441c2646bef76a4ec9092967ef61dfa Assembly-CSharp.dll:.PaintBox
 05524b8f659e7bfe5756d1335fec24ba UnityEngine.Timeline.dll:UnityEngine.Timeline.ActivationPlayableAsset
 970a95104359198fe1a98ef48655de8c UnityEngine.Timeline.dll:UnityEngine.Timeline.ActivationTrack
 8144169769d51429c4aedc8b0f92d47b UnityEngine.Timeline.dll:UnityEngine.Timeline.AnimationPlayableAsset
@@ -111,7 +111,8 @@ bc68edb0af574bf79f9550ead8ebae5c UnityEngine.HoloLens.dll:UnityEngine.Audio.Audi
 463516d5b5fe8e67a0a24c48f2095b04 UnityEngine.HoloLens.dll:UnityEngine.EventSystems.HoloLensInputModule
 c2275a8bfbb9f9942cad75ecdfded41d UnityEngine.HoloLens.dll:UnityEngine.XR.WSA.SpatialMappingCollider
 45f3431f0103c41611e8d4eec3d439df UnityEngine.HoloLens.dll:UnityEngine.XR.WSA.SpatialMappingRenderer
-a17af2161ef7ca8fad99afddb3253da7 Assembly-CSharp.dll:.changeColour
+527d9d5372cfa0d7d5bcfeade111252b Assembly-CSharp.dll:.changeColour
+05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.GetColorFromServer
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.DisplayManager
 fc1e0f4d8439d9928083474691511a13 UnityEngine.Networking.dll:UnityEngine.Networking.NetworkAnimator
 05524b8f659e7bfe5756d1335fec24ba UnityEngine.Networking.dll:UnityEngine.Networking.NetworkBehaviour
@@ -138,10 +139,10 @@ bc68edb0af574bf79f9550ead8ebae5c UnityEngine.HoloLens.dll:UnityEngine.Audio.Audi
 463516d5b5fe8e67a0a24c48f2095b04 UnityEngine.HoloLens.dll:UnityEngine.EventSystems.HoloLensInputModule
 c2275a8bfbb9f9942cad75ecdfded41d UnityEngine.HoloLens.dll:UnityEngine.XR.WSA.SpatialMappingCollider
 45f3431f0103c41611e8d4eec3d439df UnityEngine.HoloLens.dll:UnityEngine.XR.WSA.SpatialMappingRenderer
-3557dba5b78a647b7492a8eef8e31285 Assembly-CSharp.dll:.DinosaurBehavior
+ea96e510b9387527921e052db1e7990a Assembly-CSharp.dll:.DinosaurBehavior
 9de3a22eca9aefadba2d10d5987cefe3 UnityEngine.SpatialTracking.dll:UnityEngine.SpatialTracking.TrackedPoseDriver
 a17af2161ef7ca8fad99afddb3253da7 Assembly-CSharp.dll:.setchangecolour
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.NetworkViewPlayer
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.NetworkViewGameManager
-657d1c8bdc8cfdb12a1f28b24f438ada Assembly-CSharp.dll:.CloneUserID
-3d2e8a9b7dfed5b5d7172718ab7d0d70 Assembly-CSharp.dll:.PaintManager
+c83715732c5e31fb8823faf96604b63c Assembly-CSharp.dll:.PaintManager
+05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.DinoDisplay

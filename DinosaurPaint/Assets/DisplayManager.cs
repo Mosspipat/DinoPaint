@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class DisplayManager : MonoBehaviour {
 
+    public int typeWasSelected { get; set; }
 	// Use this for initialization
 	void Start () {
 		

@@ -7,17 +7,15 @@ public class PaintBox : MonoBehaviour {
     PaintManager _paintManager;
     // x = 100; y = 40;
     [SerializeField]
-    int slotX, slotY;
+    int slotX = 10, slotY= 10;
 
-    float width,height,boxPaintSizeX,boxPaintSizeY; 
+    float width,height,boxPaintSizeX,boxPaintSizeY;
 
     [SerializeField]
     GameObject boxPaint;
 
-    void Awake()
-    {
-    }
-        
+
+    public int[] allValuePaint;
 
     void Start () {
         CheckWidthHeight();
@@ -56,7 +54,8 @@ public class PaintBox : MonoBehaviour {
 
                 //miniBoxPaint.transform.position = new Vector3((boxPaintSizeX * i) + (boxPaintSizeX / 2), (boxPaintSizeY * j) + (boxPaintSizeY / 2), 0);
             }
-        } 
+        }
+      
     }
 
 
