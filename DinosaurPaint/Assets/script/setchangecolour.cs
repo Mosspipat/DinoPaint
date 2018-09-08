@@ -53,8 +53,11 @@ public class setchangecolour : MonoBehaviour {
             case 9:
                 newColor = ConflicNewColor(173, 204, 54, 255);
                 break;
+            case 0:
+                newColor = ConflicNewColor(255, 255, 255, 255);
+                break;
             default:
-                newColor = ConflicNewColor(255, 255, 255,255);
+                //newColor = ConflicNewColor(255, 255, 255,255);
                 break;
         }
        // _gameManager.newColor = i;

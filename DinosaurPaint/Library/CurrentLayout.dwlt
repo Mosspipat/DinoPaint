@@ -20,7 +20,7 @@ MonoBehaviour:
   m_ShowMode: 4
   m_Title: 
   m_RootView: {fileID: 2}
-  m_MinSize: {x: 950, y: 542}
+  m_MinSize: {x: 950, y: 392}
   m_MaxSize: {x: 10000, y: 10000}
 --- !u!114 &2
 MonoBehaviour:
@@ -43,7 +43,7 @@ MonoBehaviour:
     y: 0
     width: 1366
     height: 685
-  m_MinSize: {x: 950, y: 542}
+  m_MinSize: {x: 950, y: 392}
   m_MaxSize: {x: 10000, y: 10000}
 --- !u!114 &3
 MonoBehaviour:
@@ -105,10 +105,10 @@ MonoBehaviour:
     y: 30
     width: 1366
     height: 635
-  m_MinSize: {x: 683, y: 492}
-  m_MaxSize: {x: 14004, y: 14042}
+  m_MinSize: {x: 681, y: 342}
+  m_MaxSize: {x: 12006, y: 8042}
   vertical: 1
-  controlID: 50992
+  controlID: 10
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -129,10 +129,10 @@ MonoBehaviour:
     y: 0
     width: 1366
     height: 635
-  m_MinSize: {x: 683, y: 492}
-  m_MaxSize: {x: 14004, y: 14042}
+  m_MinSize: {x: 681, y: 342}
+  m_MaxSize: {x: 12006, y: 8042}
   vertical: 0
-  controlID: 50993
+  controlID: 11
 --- !u!114 &7
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -153,10 +153,10 @@ MonoBehaviour:
     y: 0
     width: 959
     height: 635
-  m_MinSize: {x: 406, y: 492}
-  m_MaxSize: {x: 10002, y: 14042}
+  m_MinSize: {x: 404, y: 342}
+  m_MaxSize: {x: 8004, y: 8042}
   vertical: 1
-  controlID: 50994
+  controlID: 12
 --- !u!114 &8
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -177,10 +177,10 @@ MonoBehaviour:
     y: 0
     width: 959
     height: 269
-  m_MinSize: {x: 406, y: 221}
-  m_MaxSize: {x: 8006, y: 4021}
+  m_MinSize: {x: 404, y: 221}
+  m_MaxSize: {x: 8004, y: 4021}
   vertical: 0
-  controlID: 50995
+  controlID: 13
 --- !u!114 &9
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -199,8 +199,8 @@ MonoBehaviour:
     y: 0
     width: 259
     height: 269
-  m_MinSize: {x: 202, y: 221}
-  m_MaxSize: {x: 4002, y: 4021}
+  m_MinSize: {x: 200, y: 200}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 14}
   m_Panes:
   - {fileID: 14}
@@ -251,15 +251,15 @@ MonoBehaviour:
     y: 269
     width: 959
     height: 366
-  m_MinSize: {x: 232, y: 271}
-  m_MaxSize: {x: 10002, y: 10021}
-  m_ActualView: {fileID: 17}
+  m_MinSize: {x: 102, y: 121}
+  m_MaxSize: {x: 4002, y: 4021}
+  m_ActualView: {fileID: 18}
   m_Panes:
   - {fileID: 17}
   - {fileID: 18}
   - {fileID: 19}
-  m_Selected: 0
-  m_LastSelected: 1
+  m_Selected: 1
+  m_LastSelected: 0
 --- !u!114 &12
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -332,7 +332,7 @@ MonoBehaviour:
     m_HSlider: 0
     m_VSlider: 0
     m_IgnoreScrollWheelUntilClicked: 0
-    m_EnableMouseInput: 0
+    m_EnableMouseInput: 1
     m_EnableSliderZoom: 0
     m_UniformScale: 1
     m_UpDirection: 1
@@ -390,28 +390,28 @@ MonoBehaviour:
     height: 248
   m_TreeViewState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 
+    m_SelectedIDs: e8270000
     m_LastClickedID: 0
-    m_ExpandedIDs: 241ed2ffac1ed2ff2621d2ff3021d2ff3821d2ff140fd4ff566dd6ff5e6dd6ffe489d6ffd0cdd6ffe2ffd6ff6c20d7ffa623d7ff94f6d8ffb2f8d8ffacf9d8ffbeffd8ff4600d9ffc002d9ffc802d9ffe002d9ff4620dfff4820dfff2628dfffb449dfffd450dfff3873dfff7c74dfffe2a2dfff62dfdfff5ce0dfff66e5dfffeee5dfff68e8dfff70e8dfff88e8dfff2cefdfff3cf2dfff6ef8dfff50fbdfff7cfddffff4fedfff2001e0fffc0ae0ff860ce0ff0213e0ff6413e0ffde15e0ffe615e0fffe15e0ff342ce0ff322de0ff4a33e0ff5a35e0ff02b7e0ff06b8e0ffdebae0ffc6c0e0ff4ec1e0ffc2c3e0ffcac3e0ffe0c3e0ff4ec7e0ffd6c7e0ff4ccae0ff54cae0ff6acae0ff5231e1fffc35e1ffb242e1ffd645e1ff9e47e1ff9848e1ff264ae1fff85fe1ff8261e1ff869de2ffb4d1e3ffa2a1e4ffdcb2e4ff3626e5ffb29ee5ff409fe5ff66a0e5ff70a0e5ff7ca0e5ffa2ffebffe68becff4edcecfff61fedff5822efff5ebcefff14ebefff3eecefff40edefff6aefefff7e1ef1ff085bf1ff0e5bf1ff54cff1ffca0bf2ffb205f3ff620cf3ff5c0df3ffa613f3ff2e14f3ff5c15f3ff6415f3ff7c15f3ffa81df3fffc40f3fffc41f3ff3843f3ffb468f3ffd66df3ff486ef3ff786ff3ff826ff3ff8a6ff3ff269af3ff909af3ffbe9bf3ffc89bf3ffd09bf3ff60c3f3ffe8c3f3ff16c5f3ff20c5f3ff28c5f3ff5ac8f3ffe2c8f3ff10caf3ff1acaf3ff22caf3fface3f3ff32e4f3ff60e5f3ff6ae5f3ff72e5f3ff1af2f3ffa2f2f3ffd6f3f3ffe4f3f3fff0f3f3ff8afdf3fff85cf4ff825df4ffb65ef4ffcc5ef4ffe45ef4ffc04ef5ff0c3cf7ff7863f7fff20dfaff589afaffe6d5fcff78dbfcffa694fdffa894fdffa695fdffa296fdff5af5fdffa04efeffaa4efeffa0ecfeffaaecfeff9613fffff81affffb01cffffae1dffff62efffffa6fbffff00000000103300005a3f000042400000f8460000984b00008450000072d50000fae20000a0f60000d6f70000daf70000dcfa000030fb000014020100cc020100d002010010040100140401009a050100240801003c2501000e260100c627010052760100de780100b6930100029e01007e9e0100889f0100ce9f0100d29f0100e29f010018af0100e8bd0100d0be010044bf010064c701008acc0100ced00100ded00100e0ee0100bafa0100fcfa010000fb01000cfb01003e0602008006020090060200
+    m_ExpandedIDs: 36d3feff44d3feff80d4feffa6fbffff00000000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
-      m_Name: Dino1(Clone)
-      m_OriginalName: Dino1(Clone)
+      m_Name: 
+      m_OriginalName: 
       m_EditFieldRect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 0
         height: 0
-      m_UserData: -2910290
+      m_UserData: 0
       m_IsWaitingForDelay: 0
       m_IsRenaming: 0
-      m_OriginalEventType: 0
+      m_OriginalEventType: 11
       m_IsRenamingFilename: 0
       m_ClientGUIView: {fileID: 9}
     m_SearchString: 
   m_ExpandedScenes:
-  - MainConnection
+  - Paint
   m_CurrenRootInstanceID: 0
   m_Locked: 0
   m_CurrentSortingName: TransformSorting
@@ -447,9 +447,9 @@ MonoBehaviour:
   m_isRotationLocked: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 861.20593, y: 366, z: -0.000000497853}
+    m_Target: {x: 1236.966, y: 537.5522, z: -2.001429}
     speed: 2
-    m_Value: {x: 861.20593, y: 366, z: -0.000000497853}
+    m_Value: {x: 1236.966, y: 537.5522, z: -2.001429}
   m_RenderMode: 0
   m_ValidateTrueMetals: 0
   m_SceneViewState:
@@ -476,9 +476,9 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
-    m_Target: 1015.87836
+    m_Target: 1189.4757
     speed: 2
-    m_Value: 1015.87836
+    m_Value: 1189.4757
   m_Ortho:
     m_Target: 1
     speed: 2
@@ -578,19 +578,19 @@ MonoBehaviour:
     m_ShowAllHits: 0
     m_SearchArea: 0
     m_Folders:
-    - Assets/prefab/Dino
+    - Assets/Image
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/prefab/Dino
+  - Assets/Image
   m_LastFoldersGridSize: -1
   m_LastProjectPath: D:\ProjectDinosaurPaint\DinoPaint\DinosaurPaint
   m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 9}
-    m_SelectedIDs: da280000
-    m_LastClickedID: 10458
-    m_ExpandedIDs: 0000000056270000662700006e280000842800009e280000da280000ffffff7f
+    m_SelectedIDs: e8270000
+    m_LastClickedID: 10216
+    m_ExpandedIDs: 0000000058270000682700006e280000842800009e280000da280000ffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -618,7 +618,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 0000000056270000662700006e280000842800009e280000da280000ffffff7f
+    m_ExpandedIDs: 0000000058270000682700006e280000842800009e280000da280000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -643,8 +643,8 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_ListAreaState:
-    m_SelectedInstanceIDs: 
-    m_LastClickedInstanceID: 0
+    m_SelectedInstanceIDs: e8270000
+    m_LastClickedInstanceID: 10216
     m_HadKeyboardFocusLastEvent: 1
     m_ExpandedInstanceIDs: 2e33000026bcf5ff4a2a0000
     m_RenameOverlay:

@@ -110,8 +110,8 @@ public class PaintManager : MonoBehaviour {
     }
 
     void DropdownValueChanged(Dropdown changeValue) {
-            typeDinosaurInt = changeValue.value;
-            ChangeTypePaint(typeDinosaurInt);
+        typeDinosaurInt = changeValue.value;
+        ChangeTypePaint(typeDinosaurInt);
         Debug.Log("changeDino");
         switch (typeDinosaurInt) {
             case 0:
@@ -158,10 +158,6 @@ public class PaintManager : MonoBehaviour {
         paintDino.GetComponent<RectTransform>().localScale = new Vector3(1, 1, 1);
     }
 
-    public void ResetPicture() {
-
-    }
-
     public void SendPainting() {
 
         Debug.Log("send");
@@ -186,5 +182,24 @@ public class PaintManager : MonoBehaviour {
             allPaintPartDinolegL,
             allPaintPartDinolegR);
     }
-}
 
+    public void AnimChooseCol(GameObject thisObj) {
+        Vector3 newPos = thisObj.transform.position + Vector3.right * 100f;
+        thisObj.transform.position = new Vector3(newPos.x, thisObj.transform.position.y, thisObj.transform.position.z);
+    }
+
+    public void NotAnimChooseCol(GameObject thisObj) {
+        Vector3 newPos = thisObj.transform.position - Vector3.right * 100f;
+        thisObj.transform.position = new Vector3(newPos.x, thisObj.transform.position.y, thisObj.transform.position.z);
+    }
+
+    public void ResetCol() {
+        for (int i = 0; i < maxPixel; i++) {
+            headDino.transform.GetChild(i).GetComponent<Image>().color = new Color(255, 255, 255, 255);
+            handLDino.transform.GetChild(i).GetComponent<Image>().color = new Color(255, 255, 255, 255);
+            handRDino.transform.GetChild(i).GetComponent<Image>().color = new Color(255, 255, 255, 255);
+            legLDino.transform.GetChild(i).GetComponent<Image>().color = new Color(255, 255, 255, 255);
+            legRDino.transform.GetChild(i).GetComponent<Image>().color = new Color(255, 255, 255, 255);
+        }
+    }
+}
